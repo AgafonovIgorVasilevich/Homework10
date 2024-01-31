@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AlarmSystem : MonoBehaviour
+public class Alarmer : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private float _speedChange = 0.5f;
@@ -13,19 +13,11 @@ public class AlarmSystem : MonoBehaviour
     private float _minVolume = 0;
     private float _maxVolume = 1;
 
-    private void OnTriggerEnter(Collider other)
+    public void ChangeStatus(bool isPlay)
     {
-        Thief theif = other.GetComponent<Thief>();
-
-        if (theif != null)
+        if (isPlay)
             StartCoroutine(ChangeVolume(_maxVolume));
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Thief thief = other.GetComponent<Thief>();
-
-        if (thief != null)
+        else
             StartCoroutine(ChangeVolume(_minVolume));
     }
 

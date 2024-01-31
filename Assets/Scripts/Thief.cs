@@ -12,12 +12,12 @@ public class Thief : MonoBehaviour
 
     private void OnEnable()
     {
-        AlarmSystem.AlarmStateChanged += Move;
+        Alarmer.AlarmStateChanged += Move;
     }
 
     private void OnDisable()
     {
-        AlarmSystem.AlarmStateChanged -= Move;
+        Alarmer.AlarmStateChanged -= Move;
     }
 
     private void Start()
